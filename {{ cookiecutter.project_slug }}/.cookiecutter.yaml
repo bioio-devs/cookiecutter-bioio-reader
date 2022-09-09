@@ -1,0 +1,10 @@
+default_context:
+    author_name: "{{ cookiecutter.author_name }}"
+    author_email: "{{ cookiecutter.author_email }}"
+    hosting_github_username_or_org: "{{ cookiecutter.hosting_github_username_or_org }}"
+    project_name: "{{ cookiecutter.project_name }}"
+    project_slug: "{{ cookiecutter.project_slug }}"
+    python_slug: "{{ cookiecutter.python_slug }}"
+    project_short_description: "{{ cookiecutter.project_short_description }}"
+    hosting_pypi_username: "{{ cookiecutter.hosting_pypi_username }}"
+    license: "{{ cookiecutter.license }}"

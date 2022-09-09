@@ -1,0 +1,15 @@
+{
+    "author_name": "Jane Doe",
+    "author_email": "jane@website.com",
+    "hosting_github_username_or_org": "JaneCodes",
+    "project_name": "bioio-my-custom-file-format",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-')}}",
+    "python_slug": "{{ cookiecutter.project_slug.replace('-', '_') }}",
+    "project_short_description": "A BioIO reader plugin for reading my custom image format.",
+    "hosting_pypi_username": "{{ cookiecutter.hosting_github_username_or_org }}",
+    "license": [
+      "MIT License",
+      "BSD License",
+      "GNU General Public License v3"
+    ]
+  }
