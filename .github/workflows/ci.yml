@@ -42,7 +42,7 @@ jobs:
         cookiecutter . --no-input
     - name: Test Generated Repo Install
       run: |
-        cd python-boilerplate
+        cd bioio-my-custom-file-format
         git init
         git config --global user.email "doesnt.matter@email.com"
         git config --global user.name "Sally Tests"
@@ -51,18 +51,18 @@ jobs:
         just install
     - name: Test Generated Repo Build
       run: |
-        cd python-boilerplate
+        cd bioio-my-custom-file-format
         just build
     - name: Test Generated Repo Docs
       run: |
-        cd python-boilerplate
+        cd bioio-my-custom-file-format
         just serve-docs
     - name: Test Generated Repo Clean
       run: |
-        cd python-boilerplate
+        cd bioio-my-custom-file-format
         just clean
     - name: Test Generated Repo Updates
       run: |
-        cd python-boilerplate
+        cd bioio-my-custom-file-format
         just update-from-cookiecutter
         git status
