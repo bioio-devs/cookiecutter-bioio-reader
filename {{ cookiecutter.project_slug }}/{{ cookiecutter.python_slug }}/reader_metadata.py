@@ -3,15 +3,19 @@
 
 from typing import List
 
-import bioio_types
+import bioio_types.reader_metadata
 
 ###############################################################################
 
 
-class ReaderMetadata(bioio_types.ReaderMetadata):
+class ReaderMetadata(bioio_types.reader_metadata.ReaderMetadata):
     @staticmethod
     def get_supported_extensions() -> List[str]:
-        return ["ext", "extn"]
+        """
+        Return a list of file extensions this plugin supports reading. 
+        """
+        raise NotImplementedError()
+        # return ["ext", "extn"]
 
     @staticmethod
     def get_reader() -> bioio_types.reader.Reader:
