@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from typing import Any, Optional, Tuple, TYPE_CHECKING
-from bioio_types.reader import Reader as BaseReader
+from typing import TYPE_CHECKING, Any, Optional, Tuple
+
 from bioio_types.dimensions import Dimensions
+from bioio_types.reader import Reader as BaseReader
 
 if TYPE_CHECKING:
     import xarray as xr
@@ -27,7 +28,7 @@ class Reader(BaseReader):
     _fs: "AbstractFileSystem"
     _path: str
 
-    ## Required Methods
+    # Required Methods
 
     def __init__(image: Any, **kwargs: Any):
         """
@@ -49,10 +50,10 @@ class Reader(BaseReader):
     def scenes(self) -> Tuple[str, ...]:
         """
         Return the list of available scenes for the file using the
-        cached parameters stored to the object in the __init__.        
+        cached parameters stored to the object in the __init__.
         """
         raise NotImplementedError()
-    
+
     def _read_delayed(self) -> "xr.DataArray":
         """
         Return an xarray DataArray filled with a delayed dask array, coordinate planes,
@@ -71,7 +72,7 @@ class Reader(BaseReader):
         """
         raise NotImplementedError()
 
-    ## Optional Methods
+    # Optional Methods
 
     def _get_stitched_dask_mosaic(self) -> "xr.DataArray":
         """
@@ -81,7 +82,7 @@ class Reader(BaseReader):
         and returning a delayed array.
         """
         return super()._get_stitched_dask_mosaic()
-    
+
     def _get_stitched_mosaic(self) -> "xr.DataArray":
         """
         If your file returns an `M` dimension for "Mosiac Tile",
@@ -90,5 +91,3 @@ class Reader(BaseReader):
         and returning a in-memory array.
         """
         return super()._get_stitched_mosaic()
-
-    

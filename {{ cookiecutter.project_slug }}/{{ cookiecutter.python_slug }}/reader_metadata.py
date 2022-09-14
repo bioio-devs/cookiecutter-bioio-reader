@@ -12,7 +12,7 @@ class ReaderMetadata(bioio_types.reader_metadata.ReaderMetadata):
     @staticmethod
     def get_supported_extensions() -> List[str]:
         """
-        Return a list of file extensions this plugin supports reading. 
+        Return a list of file extensions this plugin supports reading.
         """
         raise NotImplementedError()
         # return ["ext", "extn"]
