@@ -3,12 +3,12 @@
 
 from typing import List
 
-import bioio_types.reader_metadata
+import bioio_base.reader_metadata
 
 ###############################################################################
 
 
-class ReaderMetadata(bioio_types.reader_metadata.ReaderMetadata):
+class ReaderMetadata(bioio_base.reader_metadata.ReaderMetadata):
     @staticmethod
     def get_supported_extensions() -> List[str]:
         """
@@ -18,7 +18,7 @@ class ReaderMetadata(bioio_types.reader_metadata.ReaderMetadata):
         # return ["ext", "extn"]
 
     @staticmethod
-    def get_reader() -> bioio_types.reader.Reader:
+    def get_reader() -> bioio_base.reader.Reader:
         from .reader import Reader
 
         return Reader

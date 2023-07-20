@@ -3,8 +3,8 @@
 
 from typing import TYPE_CHECKING, Any, Optional, Tuple
 
-from bioio_types.dimensions import Dimensions
-from bioio_types.reader import Reader as BaseReader
+from bioio_base.dimensions import Dimensions
+from bioio_base.reader import Reader as BaseReader
 
 if TYPE_CHECKING:
     import xarray as xr
@@ -59,7 +59,7 @@ class Reader(BaseReader):
         Return an xarray DataArray filled with a delayed dask array, coordinate planes,
         and any metadata stored in the attrs.
 
-        Metadata should be labelled with one of the bioio-types constants.
+        Metadata should be labelled with one of the bioio-base constants.
         """
         raise NotImplementedError()
 
@@ -68,7 +68,7 @@ class Reader(BaseReader):
         Return an xarray DataArray filled with an in-memory numpy ndarray,
         coordinate planes, and any metadata stored in the attrs.
 
-        Metadata should be labelled with one of the bioio-types constants.
+        Metadata should be labelled with one of the bioio-base constants.
         """
         raise NotImplementedError()
 
