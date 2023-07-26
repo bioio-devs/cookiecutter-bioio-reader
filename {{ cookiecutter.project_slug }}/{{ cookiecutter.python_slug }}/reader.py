@@ -14,7 +14,24 @@ if TYPE_CHECKING:
 
 
 class Reader(BaseReader):
+    """
+    The main class of each reader plugin. This class is subclass
+    of the abstract class reader (BaseReader) in bioio-base.
 
+    Parameters
+    ----------
+    image: Any
+        Some type of object to read and follow the Reader specification.
+    fs_kwargs: Dict[str, Any]
+        Any specific keyword arguments to pass down to the fsspec created filesystem.
+        Default: {}
+
+    Notes
+    -----
+    It is up to the implementer of the Reader to decide which types they would like to
+    accept (certain readers may not support buffers for example).
+
+    """
     _xarray_dask_data: Optional["xr.DataArray"] = None
     _xarray_data: Optional["xr.DataArray"] = None
     _mosaic_xarray_dask_data: Optional["xr.DataArray"] = None

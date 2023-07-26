@@ -9,6 +9,12 @@ import bioio_base.reader_metadata
 
 
 class ReaderMetadata(bioio_base.reader_metadata.ReaderMetadata):
+    """
+    Notes
+    -----
+    Defines metadata for the reader itself (not the image read), 
+    such as supported file extensions.
+    """
     @staticmethod
     def get_supported_extensions() -> List[str]:
         """
@@ -19,6 +25,9 @@ class ReaderMetadata(bioio_base.reader_metadata.ReaderMetadata):
 
     @staticmethod
     def get_reader() -> bioio_base.reader.Reader:
+        """
+        Return reader this plugin.
+        """
         from .reader import Reader
 
         return Reader
