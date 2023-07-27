@@ -15,9 +15,10 @@
 ## Quickstart
 
 ```python
-from {{ cookiecutter.python_slug }} import example
+from {{ cookiecutter.python_slug }} import Reader 
 
-print(example.str_len("hello"))  # prints 5
+r = Reader("my-image.ext")
+r.dims
 ```
 
 ## Documentation

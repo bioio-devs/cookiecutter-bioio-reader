@@ -3,8 +3,8 @@
 
 from typing import TYPE_CHECKING, Any, Optional, Tuple
 
-from bioio_types.dimensions import Dimensions
-from bioio_types.reader import Reader as BaseReader
+from bioio_base.dimensions import Dimensions
+from bioio_base.reader import Reader as BaseReader
 
 if TYPE_CHECKING:
     import xarray as xr
@@ -14,7 +14,24 @@ if TYPE_CHECKING:
 
 
 class Reader(BaseReader):
+    """
+    The main class of each reader plugin. This class is subclass
+    of the abstract class reader (BaseReader) in bioio-base.
 
+    Parameters
+    ----------
+    image: Any
+        Some type of object to read and follow the Reader specification.
+    fs_kwargs: Dict[str, Any]
+        Any specific keyword arguments to pass down to the fsspec created filesystem.
+        Default: {}
+
+    Notes
+    -----
+    It is up to the implementer of the Reader to decide which types they would like to
+    accept (certain readers may not support buffers for example).
+
+    """
     _xarray_dask_data: Optional["xr.DataArray"] = None
     _xarray_data: Optional["xr.DataArray"] = None
     _mosaic_xarray_dask_data: Optional["xr.DataArray"] = None
@@ -59,7 +76,7 @@ class Reader(BaseReader):
         Return an xarray DataArray filled with a delayed dask array, coordinate planes,
         and any metadata stored in the attrs.
 
-        Metadata should be labelled with one of the bioio-types constants.
+        Metadata should be labelled with one of the bioio-base constants.
         """
         raise NotImplementedError()
 
@@ -68,7 +85,7 @@ class Reader(BaseReader):
         Return an xarray DataArray filled with an in-memory numpy ndarray,
         coordinate planes, and any metadata stored in the attrs.
 
-        Metadata should be labelled with one of the bioio-types constants.
+        Metadata should be labelled with one of the bioio-base constants.
         """
         raise NotImplementedError()
 
