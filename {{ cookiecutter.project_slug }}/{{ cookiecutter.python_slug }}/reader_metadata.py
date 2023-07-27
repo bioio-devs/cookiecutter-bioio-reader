@@ -26,7 +26,7 @@ class ReaderMetadata(bioio_base.reader_metadata.ReaderMetadata):
     @staticmethod
     def get_reader() -> bioio_base.reader.Reader:
         """
-        Return reader this plugin.
+        Return the reader this plugin represents
         """
         from .reader import Reader
 
