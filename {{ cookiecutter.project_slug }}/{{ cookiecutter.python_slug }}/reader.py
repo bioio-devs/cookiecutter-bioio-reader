@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from typing import TYPE_CHECKING, Any, Optional, Tuple
+from typing import Any, Optional, Tuple
 
 from bioio_base.dimensions import Dimensions
 from bioio_base.reader import Reader as BaseReader
 
-if TYPE_CHECKING:
-    import xarray as xr
-    from fsspec.spec import AbstractFileSystem
+import xarray as xr
+from fsspec.spec import AbstractFileSystem
 
 ###############################################################################
 

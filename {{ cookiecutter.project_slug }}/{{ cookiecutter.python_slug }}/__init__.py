@@ -12,7 +12,7 @@ except PackageNotFoundError:
 __author__ = "{{ cookiecutter.author_name }}"
 __email__ = "{{ cookiecutter.author_email }}"
 
-
+from .reader_metadata import Reader
 from .reader_metadata import ReaderMetadata
 
-__all__ = ["ReaderMetadata"]
+__all__ = ["Reader", "ReaderMetadata"]
