@@ -67,9 +67,14 @@ jobs:
         just update-from-cookiecutter
         git status
 
-  # Required by bioio-devs organization to succeed in order to merge
-  # done this way due to matrix testing strategy providing difficult
-  # to track workflow test names
+  # GitHub does not provide a "all status checks must pass" option
+  # in branch protection settings. Instead, you have to specify exactly
+  # what status checks want to require to pass before merging. However,
+  # naming each individual check would be effectively impossible.
+  # Therefore, by creating this stage in every repo in the org we can
+  # require "Report Result" to pass before merging and this stage can
+  # represent the result of the other checks where it only passes if
+  # all the other checks pass.
   results:
     if: ${{ always() && github.event_name == 'pull_request' }}
     needs: test-repo-gen
