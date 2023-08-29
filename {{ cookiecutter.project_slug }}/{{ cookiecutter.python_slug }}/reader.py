@@ -3,10 +3,9 @@
 
 from typing import Any, Optional, Tuple
 
+import xarray as xr
 from bioio_base.dimensions import Dimensions
 from bioio_base.reader import Reader as BaseReader
-
-import xarray as xr
 from fsspec.spec import AbstractFileSystem
 
 ###############################################################################
@@ -31,6 +30,7 @@ class Reader(BaseReader):
     accept (certain readers may not support buffers for example).
 
     """
+
     _xarray_dask_data: Optional["xr.DataArray"] = None
     _xarray_data: Optional["xr.DataArray"] = None
     _mosaic_xarray_dask_data: Optional["xr.DataArray"] = None

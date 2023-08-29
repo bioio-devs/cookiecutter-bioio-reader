@@ -83,6 +83,9 @@ jobs:
     if: "success() && startsWith(github.ref, 'refs/tags/')"
     needs: [check-manifest, test, lint]
     runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
 
     steps:
     - uses: actions/checkout@v3
@@ -99,7 +102,21 @@ jobs:
         python -m build
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: {% endraw %}{{ cookiecutter.hosting_pypi_username }}{% raw %}
-        password: ${{ secrets.PYPI_TOKEN }}
+
+  # Required by bioio-devs organization to succeed in order to merge
+  # done this way due to matrix testing strategy providing difficult
+  # to track workflow test names
+  results:
+    if: ${{ always() && github.event_name == 'pull_request' }}
+    needs: [check-manifest, test, lint]
+    runs-on: ubuntu-latest
+    name: Report Result
+    steps:
+      - run: exit 1
+        # see https://stackoverflow.com/a/67532120/4907315
+        if: >-
+          ${{
+                contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+          }}
 {% endraw %}

@@ -29,7 +29,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.10"
+        python-version: "3.11"
     - uses: extractions/setup-just@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,3 +66,20 @@ jobs:
         cd bioio-my-custom-file-format
         just update-from-cookiecutter
         git status
+
+  # Required by bioio-devs organization to succeed in order to merge
+  # done this way due to matrix testing strategy providing difficult
+  # to track workflow test names
+  results:
+    if: ${{ always() && github.event_name == 'pull_request' }}
+    needs: test-repo-gen
+    runs-on: ubuntu-latest
+    name: Report Result
+    steps:
+      - run: exit 1
+        # see https://stackoverflow.com/a/67532120/4907315
+        if: >-
+          ${{
+                contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+          }}
