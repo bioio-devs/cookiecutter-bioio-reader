@@ -29,7 +29,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.10"
+        python-version: "3.11"
     - uses: extractions/setup-just@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,3 +66,25 @@ jobs:
         cd bioio-my-custom-file-format
         just update-from-cookiecutter
         git status
+
+  # GitHub does not provide a "all status checks must pass" option
+  # in branch protection settings. Instead, you have to specify exactly
+  # what status checks want to require to pass before merging. However,
+  # naming each individual check would be effectively impossible.
+  # Therefore, by creating this stage in every repo in the org we can
+  # require "Report Result" to pass before merging and this stage can
+  # represent the result of the other checks where it only passes if
+  # all the other checks pass.
+  results:
+    if: ${{ always() && github.event_name == 'pull_request' }}
+    needs: test-repo-gen
+    runs-on: ubuntu-latest
+    name: Report Result
+    steps:
+      - run: exit 1
+        # see https://stackoverflow.com/a/67532120/4907315
+        if: >-
+          ${{
+                contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+          }}
