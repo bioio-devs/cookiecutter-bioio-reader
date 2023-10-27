@@ -1,7 +1,7 @@
 # {{ cookiecutter.project_slug }}
 
-[![Build Status](https://github.com/{{ cookiecutter.hosting_github_username_or_org }}/{{ cookiecutter.project_slug }}/workflows/CI/badge.svg)](https://github.com/{{ cookiecutter.hosting_github_username_or_org }}/{{ cookiecutter.project_slug }}/actions)
-[![Documentation](https://github.com/{{ cookiecutter.hosting_github_username_or_org }}/{{ cookiecutter.project_slug }}/workflows/Documentation/badge.svg)](https://{{ cookiecutter.hosting_github_username_or_org }}.github.io/{{ cookiecutter.project_slug }})
+[![Build Status](https://github.com/{{ cookiecutter.hosting_github_username_or_org }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cookiecutter.hosting_github_username_or_org }}/{{ cookiecutter.project_slug }}/actions)
+[![Documentation](https://github.com/{{ cookiecutter.hosting_github_username_or_org }}/{{ cookiecutter.project_slug }}/actions/workflows/docs.yml/badge.svg)](https://{{ cookiecutter.hosting_github_username_or_org }}.github.io/{{ cookiecutter.project_slug }})
 
 {{ cookiecutter.project_short_description }}
 
