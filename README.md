@@ -1,6 +1,6 @@
 # Cookiecutter BioIO Reader
 
-[![Build Status](https://github.com/bioio-devs/cookiecutter-bioio-reader/workflows/CI/badge.svg)](https://github.com/bioio-devs/cookiecutter-bioio-reader/actions)
+[![Build Status](https://github.com/bioio-devs/cookiecutter-bioio-reader/actions/workflows/ci.yml/badge.svg)](https://github.com/bioio-devs/cookiecutter-bioio-reader/actions)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
