@@ -53,10 +53,6 @@ jobs:
       run: |
         cd bioio-my-custom-file-format
         just build
-    - name: Test Generated Repo Docs
-      run: |
-        cd bioio-my-custom-file-format
-        just serve-docs
     - name: Test Generated Repo Clean
       run: |
         cd bioio-my-custom-file-format

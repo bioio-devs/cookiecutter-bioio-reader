@@ -65,11 +65,6 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
-docs/{{ cookiecutter.python_slug }}.*rst
-docs/modules.rst
-
 # PyBuilder
 target/
 
