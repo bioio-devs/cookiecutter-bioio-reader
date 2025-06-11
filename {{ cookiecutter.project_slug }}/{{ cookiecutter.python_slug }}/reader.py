@@ -58,7 +58,7 @@ class Reader(BaseReader):
     def _is_supported_image(fs: "AbstractFileSystem", path: str, **kwargs: Any) -> bool:
         """
         Perform a check to determine if the object(s) or path(s) provided as
-        parameters are supported by this reader.
+        parameters are supported by this reader. Raise an exception if not.
         """
         raise NotImplementedError()
 
