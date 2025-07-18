@@ -22,7 +22,14 @@ clean:
 # install with all deps
 install:
 	pip install -e .[lint,test]
+
+setup-dev:
+	just install
 	pre-commit install
+
+# run performance tests
+benchmark:
+	python scripts/benchmark.py
 
 # lint, format, and check all files
 lint:
